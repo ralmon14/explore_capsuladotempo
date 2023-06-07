@@ -1,0 +1,189 @@
+/*Para resetar as config de resul do navegador.*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*Selecionar raiz do site padrão de tamanho de fonte do site*/
+:root {
+  font-size: 16px;
+}
+
+/*::-webkit - seletor de webkit mecanismo que permite que renderize e modifique os elementos do navegador. */
+::-webkit-scrollbar {
+  width: 8px;
+
+}
+
+::-webkit-scrollbar-track {
+  background-color: #2c2c31;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9e9ea0;
+}
+/*Animação*/
+@keyframes entering{
+from {
+  opacity: 0;
+  transform: translateY(-230px);
+}
+to {
+  opacity: 1;
+  /*translate y - manipula na vertical.*/
+  transform: translateY(0);
+}
+/*
+0% { background-color #red;}
+30% { background-color #green;}
+70% { opacity: 0;}
+100% { opacity: 1;}
+*/
+/*
+0% {opacity: 0;}
+100% {opacity: 1;}
+*/
+}
+
+body {
+  background-color: #121215;
+  color: #EAEAea;
+  font-family: 'Ubuntu', sans-serif;
+
+  display: grid;
+  grid-template-areas: "profile timeline";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100vh;
+}
+
+nav {
+  padding: 64px;
+  grid-area: timeline;
+
+  overflow-y:scroll ;
+  animation: entering 0.5s ease-in-out;
+}
+
+.memory {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  text-decoration: none;
+  margin-bottom: 64px;
+}
+
+.memory small {
+  color: #BEBEBF;
+  font-size: 0.75rem;
+}
+
+.memory h1 {
+  font-size: 2rem;
+  color: #BEBEBF;
+}
+
+.memory img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 8px;
+
+  /* ease-in-out; ease-in; ease-out - modo de transição*/
+  transition: transform 0.3s ease-in-out;
+}
+
+.memory div {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/*:hover - executar visual definido nele quando mouse estiver em cima do elemento.*/
+.memory:hover img {
+  transform: scale(1.1);
+}
+
+.memory p {
+  font-size: 1.2rem;
+  color: #BeBebf;
+  line-height: 28px;
+}
+
+aside {
+  grid-area: profile;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  border-right: 1px solid;
+  border-image: linear-gradient(#727275, #2c2c71) 1;
+
+  background-image: url("./3aula_assets/background.svg");
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+
+aside * { /*selecionando todos os elementos dentro de aside*/
+  animation: entering 0.5s ease-in-out;
+}
+
+aside a{
+  text-decoration: none;
+  color: #BEBEBF;
+  font-size: 1rem;
+}
+
+aside img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+
+  border: 4px solid transparent;
+  background: linear-gradient(#d39e33, #ed5636, #633bbc) padding-box, linear-gradient(260deg, #d39e33, #ed5636, #633bbc) border-box;
+}
+
+aside p {
+  font-size: 2rem;
+  text-align: center;
+}
+
+aside span {
+  font-size: 1rem;
+  color: #9e9ea0;
+  text-align: center;
+
+}
+
+/*responsivo - definindo visualização em celulares com tela pequena*/
+@media (max-width: 768px){
+  :root {
+    font-size: 14px;
+  }
+  
+  body{
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 0.8fr;
+    grid-template-areas:
+    "profile"
+    "timeline";
+  }
+
+  aside {
+    border-right: none;
+    padding: 32px 12px;
+  }
+
+  nav {
+    overflow: visible;
+    padding: 22px;
+  }
+
+
+}
